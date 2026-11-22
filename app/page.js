@@ -55,9 +55,9 @@ export default function Home() {
         </div>
       </div>
 
-      <Reveal>
-        <h2 className="mb-4 font-display text-2xl font-bold text-pink-700">Shop by Category</h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      
+        <h2 className="mb-4 font-display text-2xl font-bold text-pink-700 px-2">Shop by Category</h2>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 px-2">
           {CATEGORIES.map((c) => (
             <Link key={c.name} href={catHref(c.name)} className="group flex flex-col items-center rounded-2xl border border-pink-100 bg-gradient-to-b from-pink-100 to-white p-5 text-center transition hover:shadow-md">
               <span className="text-4xl transition group-hover:scale-110">{c.emoji}</span>
@@ -65,7 +65,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
-      </Reveal>
+      
 
       <Grid title="Trending in Bangladesh" products={trending} href="/all-products?featured=trending" />
       <Grid title="New Arrivals" products={fresh} href="/all-products?featured=new" />
@@ -75,7 +75,7 @@ export default function Home() {
         return list?.length ? <Grid key={c.name} title={`${c.emoji} ${c.name}`} products={list} href={catHref(c.name)} /> : null;
       })}
 
-      <Reveal>
+      
         <div className="rounded-3xl bg-pink-100/70 p-6">
           <h2 className="mb-5 text-center font-display text-2xl font-bold text-pink-700">Delivery &amp; Exchange</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -87,7 +87,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </Reveal>
+      
     </>
   );
 }

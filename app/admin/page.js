@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import DashShell from "@/components/DashShell";
-import { LandingBuilder, Overview, OrdersTable, ProductForm, ProductsTable, UsersTable } from "@/components/admin";
+import { Overview, OrdersTable, ProductForm, ProductsTable, UsersTable } from "@/components/admin";
+import LandingBuilder from "@/components/LandingBuilder";
 import { useStore } from "@/lib/store";
+import Link from "next/link";
 
 const TABS = [
   { id: "overview", label: "Overview" },
@@ -22,7 +24,7 @@ export default function Admin() {
 
   useEffect(() => { if (!isPending && !session) router.replace("/login"); }, [isPending, session, router]);
   if (!session || !me) return <p className="py-20 text-center text-gray-500">Loading...</p>;
-  if (!isAdmin) return <p className="py-20 text-center text-gray-500">This area is for admins only. Add your email to <code>ADMIN_EMAILS</code> in the backend env.</p>;
+  if (!isAdmin) return <p className="py-20 text-center text-gray-500">This area is for admins only. <br></br> <div className="pt-10"><Link href={"/"} className="rounded-xl px-4 py-2 border border-pink-200 text-sm text-pink-600 hover:bg-pink-50">Return to home</Link></div></p>;
 
   const go = (t) => { setEditing(null); setTab(t); };
   return (
